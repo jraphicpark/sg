@@ -7,7 +7,14 @@ echo '<pre>';
 
 // grab data
 $file = 'example_data.json';
-$jsonFile = file_get_contents($file);
+
+
+if ( !@$jsonFile = file_get_contents($file) ) {
+	echo '"example_data.json" is missing or cannot be read. <br />';
+	echo 'Please check permissions and then run <a href="createExampleData.php" target="_blank">createExampleData.php</a> to create example data.';
+	exit;
+}
+
 $json = json_decode($jsonFile, true);
 
 
@@ -38,6 +45,7 @@ for ($i = 1900; $i <= 2000; $i++) {
 		}
 	}
 }
+
 
 // sort year count in descending order
 arsort($yearCount);
@@ -75,6 +83,8 @@ if (count($results) > 1) {
 // show all results
 echo '<hr>Data sorted by most living within given year.<br>';
 print_r($yearCount);
+
+
 
 ?>
 

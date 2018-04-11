@@ -43,5 +43,4 @@ file_put_contents($filename, $json);
 echo '<pre>' . $filename . ' has been created and filled with the data below:<br />';
 print_r($record);
 
-
 ?>
